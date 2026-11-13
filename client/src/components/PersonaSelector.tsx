@@ -1,5 +1,3 @@
-import hiteshImg from '../assets/hitesh.jpg';
-import piyushImg from '../assets/piyush.jpg';
 import { ChatStore, type Persona } from '../store/chatStore';
 
 const personas: Persona[] = [
@@ -7,13 +5,13 @@ const personas: Persona[] = [
     id: 'hitesh',
     name: 'Hitesh Chaudhary',
     role: 'Founder, Chai aur Code',
-    image: hiteshImg,
+    image: '/hitesh.jpg',
   },
   {
     id: 'piyush',
     name: 'Piyush Garg',
     role: 'Founder, Teachyst',
-    image: piyushImg,
+    image: '/piyush.jpg',
   },
 ];
 
