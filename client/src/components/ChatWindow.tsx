@@ -100,7 +100,7 @@ export default function ChatWindow() {
             <div className="flex flex-col gap-8">
               {allMessages.map((message: Message) => (
                 <ChatMessage
-                  key={message.id}
+                  key={message?._id || message.id}
                   message={message}
                   personaImage={selectedPersona?.image}
                   personaName={selectedPersona?.name}
