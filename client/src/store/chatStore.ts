@@ -22,7 +22,7 @@ interface ChatState {
   isTyping: boolean,
   setSelectedPersona: (persona: Persona | null) => void,
   sendMessage: (personaId: string, message: string) => void,
-  getAllMessages: (persona: Persona) => void,
+  getAllMessages: () => void,
 }
 
 export const ChatStore = create<ChatState>((set)=>({
@@ -51,7 +51,7 @@ export const ChatStore = create<ChatState>((set)=>({
     }))
 
     try{
-      const {data} = await axiosInstance.post('/chat', {userMessage}) 
+      const {data} = await axiosInstance.post('/chat', userMessage) 
 
       set((state) => ({
         messages: {
@@ -70,7 +70,7 @@ export const ChatStore = create<ChatState>((set)=>({
   getAllMessages: async () => {
     try {
       const { data } = await axiosInstance.get('/chat/messages');
-      set({messages: data})
+      set({messages: data.conversations})
     } catch (error) {
       console.error("Failed to fetch messages:", error);
     }

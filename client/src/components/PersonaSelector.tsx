@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ChatStore, type Persona } from '../store/chatStore';
 
 const personas: Persona[] = [
@@ -16,12 +17,16 @@ const personas: Persona[] = [
 ];
 
 const PersonaSelector = () => {
-  const {selectedPersona, setSelectedPersona} = ChatStore()
+  const {selectedPersona, setSelectedPersona, getAllMessages} = ChatStore()
   const activeId = selectedPersona?.id;
 
   const handleSelect = (persona: Persona) => {
     setSelectedPersona(persona)
   };
+
+  useEffect(() => {
+    getAllMessages();
+  }, [getAllMessages]); 
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center p-6">
